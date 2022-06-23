@@ -3,6 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -145,6 +146,14 @@
                     <navigationItem key="navigationItem" title="Gerador de Senhas" id="KPB-bl-6an">
                         <barButtonItem key="backBarButtonItem" title="Gerador de Senhas" id="78B-mW-yeR"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="swCapitalLetters" destination="mGG-ud-rbz" id="mdH-Rn-All"/>
+                        <outlet property="swLetters" destination="3ct-PT-a2a" id="8Hy-OG-wMh"/>
+                        <outlet property="swNumbers" destination="JnX-yB-7gf" id="OUe-1s-Efr"/>
+                        <outlet property="swSpecialCharacters" destination="1Z2-wD-Vyx" id="TJ8-eh-yC0"/>
+                        <outlet property="tfNumberOfCharacteres" destination="eOM-n0-I0N" id="Tx0-gD-013"/>
+                        <outlet property="tfTotalPassword" destination="pQf-IK-gck" id="CF2-Qb-nns"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -153,7 +162,7 @@
         <!--Lista de senhas-->
         <scene sceneID="nMh-SK-a2V">
             <objects>
-                <viewController id="lG3-5r-WWk" sceneMemberID="viewController">
+                <viewController id="lG3-5r-WWk" customClass="PasswordViewController" customModule="SuperSenha" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cbs-ra-1uQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -176,17 +185,21 @@
                                 <state key="normal" title="Gerar novamente ">
                                     <color key="titleColor" red="0.59607843140000005" green="0.14117647059999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="generate:" destination="lG3-5r-WWk" eventType="touchUpInside" id="zqz-NG-26P"/>
+                                </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="999999" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KRj-vu-QWR">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KRj-vu-QWR">
                                 <rect key="frame" x="16" y="118" width="343" height="421"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gfA-2S-MSM"/>
-                        <color key="backgroundColor" red="0.59607843140000005" green="0.14117647059999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.59607843140000005" green="0.14117647059999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" name="AccentColor"/>
                         <constraints>
                             <constraint firstItem="1gY-BC-hCh" firstAttribute="top" secondItem="KRj-vu-QWR" secondAttribute="bottom" constant="12" id="0GA-qR-oyx"/>
                             <constraint firstItem="KRj-vu-QWR" firstAttribute="top" secondItem="gfA-2S-MSM" secondAttribute="top" constant="22" id="0x2-rJ-U1X"/>
@@ -200,15 +213,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Lista de senhas" id="YXg-Ai-a0K"/>
+                    <connections>
+                        <outlet property="tvPassword" destination="KRj-vu-QWR" id="h1a-EM-iRq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWP-Oc-Boa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1912.8" y="75.112443778110944"/>
         </scene>
-        <!--View Controller-->
+        <!--Security Tips View Controller-->
         <scene sceneID="rVA-vZ-yop">
             <objects>
-                <viewController id="f4z-b8-QPv" sceneMemberID="viewController">
+                <viewController id="f4z-b8-QPv" customClass="SecurityTipsViewController" customModule="SuperSenha" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sWe-D8-gCT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -224,9 +240,12 @@
                                 <state key="normal" title="Fechar">
                                     <color key="titleColor" red="0.59607843140000005" green="0.14117647059999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="close:" destination="f4z-b8-QPv" eventType="touchUpInside" id="o3G-to-1lT"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="82K-eq-IgL">
-                                <rect key="frame" x="16" y="77" width="335" height="517"/>
+                                <rect key="frame" x="16" y="52" width="335" height="542"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <attributedString key="attributedText">
@@ -416,6 +435,7 @@ Há diversos programas disponíveis que armazenam os dados de maneira segura e a
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="aOr-qY-0aC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -429,6 +449,9 @@ Há diversos programas disponíveis que armazenam os dados de maneira segura e a
     </scenes>
     <resources>
         <image name="lock" width="172.5" height="210"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
